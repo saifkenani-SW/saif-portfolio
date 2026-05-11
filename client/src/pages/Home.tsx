@@ -1,25 +1,538 @@
 import { Button } from "@/components/ui/button";
-import { Loader2 } from "lucide-react";
-import { Streamdown } from 'streamdown';
+import { Github, Mail, ExternalLink, Code2, Database, Zap, Shield } from "lucide-react";
+import { useEffect, useState } from "react";
 
 /**
- * All content in this page are only for example, replace with your own feature implementation
- * When building pages, remember your instructions in Frontend Best Practices, Design Guide and Common Pitfalls
+ * DESIGN PHILOSOPHY: Premium Dark Backend Engineer Portfolio
+ * - Deep charcoal/near-black backgrounds with crisp white/light gray text
+ * - Accent colors in cyan (#00d9ff) for technical elements
+ * - Playfair Display serif for headings (bold, professional)
+ * - Inter sans-serif for body (clean, readable)
+ * - Asymmetric layouts with generous whitespace
+ * - Subtle animations on scroll and hover
+ * - Minimal code-inspired visual accents
+ * - "Recall" project as visual anchor and showcase
  */
+
+interface Project {
+  id: string;
+  title: string;
+  type: string;
+  description: string;
+  highlights: string[];
+  tech: string[];
+  github?: string;
+  featured?: boolean;
+}
+
+const projects: Project[] = [
+  {
+    id: "recall",
+    title: "Recall",
+    type: "Enterprise Administrative Platform",
+    description: "Large-scale modular backend platform built with NestJS and TypeScript, focused on authentication, permissions, records management, committee workflows, and organizational hierarchy management.",
+    highlights: [
+      "RBAC/permissions architecture",
+      "Modular monolith structure",
+      "Redis caching",
+      "Prisma ORM",
+      "Sessions management",
+      "Committee workflow logic",
+      "Layered backend architecture",
+      "Scalable module organization"
+    ],
+    tech: ["NestJS", "TypeScript", "Prisma", "Redis"],
+    github: "https://github.com",
+    featured: true
+  },
+  {
+    id: "cabsula",
+    title: "Cabsula",
+    type: "Pharmacy Management System",
+    description: "Enterprise pharmacy management backend focused on inventory consistency, supplier workflows, batch tracking, financial operations, and role-based administration.",
+    highlights: [
+      "Authentication system",
+      "Inventory lifecycle handling",
+      "Supplier and invoice management",
+      "Stock returns and destruction workflows",
+      "Admin authorization architecture",
+      "REST APIs",
+      "Sanctum security"
+    ],
+    tech: ["Laravel", "Sanctum", "MySQL", "Blade", "REST API"],
+    github: "https://github.com"
+  },
+  {
+    id: "goswift",
+    title: "GoSwift Backend",
+    type: "E-Commerce / Orders Backend",
+    description: "Scalable backend architecture for stores, products, carts, orders, and notifications with modular API organization and admin management capabilities.",
+    highlights: [
+      "Cart system",
+      "Order lifecycle",
+      "Filtering/search",
+      "Notifications",
+      "Admin dashboard backend",
+      "Modular APIs"
+    ],
+    tech: ["Laravel", "MySQL", "REST API"],
+    github: "https://github.com"
+  },
+  {
+    id: "senet",
+    title: "Senet Game",
+    type: "AI Strategy Board Game",
+    description: "Board game implementation focused on game-state modeling, AI decision systems, probability evaluation, and search-based gameplay logic.",
+    highlights: [
+      "ExpectMiniMax algorithm",
+      "Game state evaluation",
+      "AI move calculation",
+      "Probability modeling",
+      "Object-oriented architecture"
+    ],
+    tech: ["Java", "OOP", "AI Search Algorithms"],
+    github: "https://github.com"
+  },
+  {
+    id: "maze",
+    title: "Maze Collapse Game",
+    type: "Search Algorithm Puzzle Game",
+    description: "Maze-based puzzle game implementing classical search algorithms with dynamic map behavior and multiple visualization modes.",
+    highlights: [
+      "BFS algorithm",
+      "DFS algorithm",
+      "UCS algorithm",
+      "2D/3D rendering",
+      "Level simulation",
+      "File-based maps"
+    ],
+    tech: ["Java", "Swing", "Search Algorithms"],
+    github: "https://github.com"
+  },
+  {
+    id: "compiler",
+    title: "Flask Compiler",
+    type: "Compiler + Web Application",
+    description: "Hybrid project combining compiler construction concepts with a Flask-powered product management web application.",
+    highlights: [
+      "Lexer implementation",
+      "Parser construction",
+      "AST generation",
+      "Symbol table management",
+      "Compiler testing",
+      "Flask backend",
+      "Image upload system"
+    ],
+    tech: ["Python", "Flask", "Compiler Design"],
+    github: "https://github.com"
+  },
+  {
+    id: "parallel",
+    title: "Parallel Programming App",
+    type: "Modular Backend Application",
+    description: "Structured NestJS backend application demonstrating scalable modular architecture and separated business domains.",
+    highlights: [
+      "Domain modules",
+      "Orders/payments/inventory separation",
+      "Docker setup",
+      "Email module",
+      "Scalable structure"
+    ],
+    tech: ["NestJS", "TypeScript", "Docker"],
+    github: "https://github.com"
+  }
+];
+
+const techStack = {
+  "Backend": ["NestJS", "Laravel", "TypeScript", "PHP", "Python", "Java"],
+  "Database & Infrastructure": ["Prisma", "MySQL", "Redis", "Docker"],
+  "Concepts": ["REST APIs", "Authentication", "RBAC", "System Design", "Search Algorithms", "Compiler Design"]
+};
+
 export default function Home() {
-  // If theme is switchable in App.tsx, we can implement theme toggling like this:
-  // const { theme, toggleTheme } = useTheme();
+  const [scrollY, setScrollY] = useState(0);
+  const [visibleProjects, setVisibleProjects] = useState<string[]>([]);
+
+  useEffect(() => {
+    const handleScroll = () => setScrollY(window.scrollY);
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+                setVisibleProjects((prev) => {
+                  const updated = new Set(prev);
+                  updated.add(entry.target.id);
+                  return Array.from(updated);
+                });
+          }
+        });
+      },
+      { threshold: 0.1 }
+    );
+
+    const projectElements = document.querySelectorAll("[data-project]");
+    projectElements.forEach((el) => {
+      observer.observe(el);
+    });
+
+    return () => observer.disconnect();
+  }, []);
 
   return (
-    <div className="min-h-screen flex flex-col">
-      <main>
-        {/* Example: lucide-react for icons */}
-        <Loader2 className="animate-spin" />
-        Example Page
-        {/* Example: Streamdown for markdown rendering */}
-        <Streamdown>Any **markdown** content</Streamdown>
-        <Button variant="default">Example Button</Button>
-      </main>
+    <div className="min-h-screen bg-background text-foreground">
+      {/* Navigation */}
+      <nav className="fixed top-0 left-0 right-0 z-50 bg-background/80 backdrop-blur-md border-b border-border">
+        <div className="container max-w-7xl mx-auto px-4 py-4 flex items-center justify-between">
+          <div className="text-lg font-bold text-accent">SK</div>
+          <div className="flex gap-6 text-sm">
+            <a href="#about" className="hover:text-accent transition-colors">About</a>
+            <a href="#projects" className="hover:text-accent transition-colors">Projects</a>
+            <a href="#tech" className="hover:text-accent transition-colors">Tech</a>
+            <a href="#contact" className="hover:text-accent transition-colors">Contact</a>
+          </div>
+        </div>
+      </nav>
+
+      {/* Hero Section */}
+      <section className="relative min-h-screen flex items-center pt-20 overflow-hidden">
+        {/* Background Image */}
+        <div 
+          className="absolute inset-0 z-0"
+          style={{
+            backgroundImage: "url('https://d2xsxph8kpxj0f.cloudfront.net/310519663252151284/YRMVdaCd3WRBALBDiSkFtd/hero-bg-dark-tech-nMcVejJEFvV7E5USQ4gp52.webp')",
+            backgroundSize: "cover",
+            backgroundPosition: "center",
+            opacity: 0.15,
+            transform: `translateY(${scrollY * 0.5}px)`
+          }}
+        />
+        
+        <div className="container max-w-7xl mx-auto px-4 relative z-10">
+          <div className="max-w-3xl">
+            <div className="mb-6 inline-block">
+              <span className="text-accent text-sm font-mono tracking-wider">Backend Engineer</span>
+            </div>
+            
+            <h1 className="text-6xl md:text-7xl font-bold mb-6 leading-tight">
+              Building Scalable Systems
+            </h1>
+            
+            <p className="text-xl md:text-2xl text-foreground/80 mb-8 leading-relaxed max-w-2xl">
+              Specialized in modular architectures, enterprise APIs, authentication systems, and infrastructure design. Focused on clean code and system scalability.
+            </p>
+            
+            <div className="flex flex-col sm:flex-row gap-4">
+              <Button 
+                className="bg-accent text-accent-foreground hover:bg-accent/90 text-base px-8 py-6"
+                onClick={() => document.getElementById("projects")?.scrollIntoView({ behavior: "smooth" })}
+              >
+                View Projects
+              </Button>
+              <Button 
+                variant="outline" 
+                className="border-accent text-accent hover:bg-accent/10 text-base px-8 py-6"
+                onClick={() => window.open("https://github.com", "_blank")}
+              >
+                <Github className="w-5 h-5 mr-2" />
+                GitHub
+              </Button>
+              <Button 
+                variant="outline" 
+                className="border-accent text-accent hover:bg-accent/10 text-base px-8 py-6"
+                onClick={() => window.open("mailto:contact@example.com")}
+              >
+                <Mail className="w-5 h-5 mr-2" />
+                Contact
+              </Button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* About Section */}
+      <section id="about" className="py-20 md:py-32 border-t border-border">
+        <div className="container max-w-7xl mx-auto px-4">
+          <div className="grid md:grid-cols-2 gap-12 items-center">
+            <div>
+              <h2 className="text-4xl md:text-5xl font-bold mb-8">About Me</h2>
+              <div className="space-y-6 text-lg text-foreground/80">
+                <p>
+                  I'm a backend engineer from Syria, currently studying at Damascus University. My focus is on designing and building scalable systems that prioritize clean architecture and maintainability.
+                </p>
+                <p>
+                  I specialize in modular backend architectures, REST API design, authentication and authorization systems, and enterprise-grade infrastructure. My engineering mindset centers on system organization, scalability, and the principles that make code maintainable at scale.
+                </p>
+                <p>
+                  Beyond backend systems, I'm interested in algorithms, AI game logic, compiler design, and software architecture patterns. I approach each project with a focus on technical excellence and engineering rigor.
+                </p>
+              </div>
+            </div>
+            
+            <div className="grid grid-cols-2 gap-6">
+              <div className="bg-card border border-border rounded-lg p-6">
+                <Code2 className="w-8 h-8 text-accent mb-4" />
+                <h3 className="font-bold mb-2">Backend Architecture</h3>
+                <p className="text-sm text-foreground/60">Modular design, clean code, scalable systems</p>
+              </div>
+              <div className="bg-card border border-border rounded-lg p-6">
+                <Shield className="w-8 h-8 text-accent mb-4" />
+                <h3 className="font-bold mb-2">Authentication</h3>
+                <p className="text-sm text-foreground/60">RBAC, permissions, secure systems</p>
+              </div>
+              <div className="bg-card border border-border rounded-lg p-6">
+                <Database className="w-8 h-8 text-accent mb-4" />
+                <h3 className="font-bold mb-2">Data Management</h3>
+                <p className="text-sm text-foreground/60">ORM, caching, query optimization</p>
+              </div>
+              <div className="bg-card border border-border rounded-lg p-6">
+                <Zap className="w-8 h-8 text-accent mb-4" />
+                <h3 className="font-bold mb-2">Performance</h3>
+                <p className="text-sm text-foreground/60">Optimization, scalability, efficiency</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Tech Stack Section */}
+      <section id="tech" className="py-20 md:py-32 border-t border-border bg-card/30">
+        <div className="container max-w-7xl mx-auto px-4">
+          <h2 className="text-4xl md:text-5xl font-bold mb-16">Technology Stack</h2>
+          
+          <div className="grid md:grid-cols-3 gap-12">
+            {Object.entries(techStack).map(([category, techs]) => (
+              <div key={category}>
+                <h3 className="text-xl font-bold text-accent mb-6">{category}</h3>
+                <div className="space-y-3">
+                  {techs.map((tech) => (
+                    <div key={tech} className="flex items-center gap-3">
+                      <div className="w-2 h-2 bg-accent rounded-full" />
+                      <span className="text-foreground/80">{tech}</span>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Projects Section */}
+      <section id="projects" className="py-20 md:py-32 border-t border-border">
+        <div className="container max-w-7xl mx-auto px-4">
+          <h2 className="text-4xl md:text-5xl font-bold mb-16">Featured Projects</h2>
+          
+          {/* Recall Project - Featured */}
+          <div 
+            id="recall"
+            data-project
+            className={`mb-20 transition-all duration-700 ${
+              visibleProjects.includes("recall") ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
+            }`}
+          >
+            <div className="grid md:grid-cols-2 gap-8 items-center bg-card border border-border rounded-lg overflow-hidden">
+              <div className="h-80 md:h-full bg-gradient-to-br from-accent/20 to-transparent relative overflow-hidden">
+                <img 
+                  src="https://d2xsxph8kpxj0f.cloudfront.net/310519663252151284/YRMVdaCd3WRBALBDiSkFtd/project-recall-showcase-Vz6Xtg8oGKcLJubMWYhF33.webp"
+                  alt="Recall Architecture"
+                  className="w-full h-full object-cover"
+                />
+                <div className="absolute inset-0 bg-gradient-to-r from-background/80 to-transparent" />
+              </div>
+              
+              <div className="p-8 md:p-12">
+                <div className="inline-block mb-4 px-3 py-1 bg-accent/20 text-accent text-xs font-mono rounded">
+                  FEATURED PROJECT
+                </div>
+                
+                <h3 className="text-3xl md:text-4xl font-bold mb-3">Recall</h3>
+                <p className="text-accent text-sm font-mono mb-6">Enterprise Administrative Platform</p>
+                
+                <p className="text-foreground/80 mb-8 leading-relaxed">
+                  Large-scale modular backend platform built with NestJS and TypeScript, focused on authentication, permissions, records management, committee workflows, and organizational hierarchy management.
+                </p>
+                
+                <div className="mb-8">
+                  <h4 className="font-bold text-sm text-accent mb-4">ARCHITECTURE HIGHLIGHTS</h4>
+                  <ul className="space-y-2">
+                    {projects[0].highlights.map((highlight) => (
+                      <li key={highlight} className="text-sm text-foreground/70 flex items-start gap-3">
+                        <span className="text-accent mt-1">→</span>
+                        <span>{highlight}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+                
+                <div className="mb-8">
+                  <h4 className="font-bold text-sm text-accent mb-4">TECH STACK</h4>
+                  <div className="flex flex-wrap gap-2">
+                    {projects[0].tech.map((tech) => (
+                      <span key={tech} className="px-3 py-1 bg-card border border-border text-sm rounded text-foreground/80">
+                        {tech}
+                      </span>
+                    ))}
+                  </div>
+                </div>
+                
+                <Button 
+                  className="bg-accent text-accent-foreground hover:bg-accent/90"
+                  onClick={() => window.open(projects[0].github, "_blank")}
+                >
+                  <ExternalLink className="w-4 h-4 mr-2" />
+                  View on GitHub
+                </Button>
+              </div>
+            </div>
+          </div>
+
+          {/* Other Projects Grid */}
+          <div className="grid md:grid-cols-2 gap-8">
+            {projects.slice(1).map((project, index) => (
+              <div
+                key={project.id}
+                id={project.id}
+                data-project
+                className={`bg-card border border-border rounded-lg p-8 hover:border-accent/50 transition-all duration-700 ${
+                  visibleProjects.includes(project.id) ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
+                }`}
+              >
+                <h3 className="text-2xl font-bold mb-2">{project.title}</h3>
+                <p className="text-accent text-xs font-mono mb-4">{project.type}</p>
+                
+                <p className="text-foreground/70 mb-6 leading-relaxed">
+                  {project.description}
+                </p>
+                
+                <div className="mb-6">
+                  <h4 className="font-bold text-xs text-accent mb-3 tracking-wider">KEY FEATURES</h4>
+                  <ul className="space-y-2">
+                    {project.highlights.slice(0, 3).map((highlight) => (
+                      <li key={highlight} className="text-xs text-foreground/60 flex items-start gap-2">
+                        <span className="text-accent">•</span>
+                        <span>{highlight}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+                
+                <div className="mb-6">
+                  <div className="flex flex-wrap gap-2">
+                    {project.tech.map((tech) => (
+                      <span key={tech} className="px-2 py-1 bg-background border border-border text-xs rounded text-foreground/70">
+                        {tech}
+                      </span>
+                    ))}
+                  </div>
+                </div>
+                
+                <Button 
+                  variant="outline"
+                  size="sm"
+                  className="border-accent text-accent hover:bg-accent/10"
+                  onClick={() => window.open(project.github, "_blank")}
+                >
+                  <ExternalLink className="w-3 h-3 mr-2" />
+                  GitHub
+                </Button>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Engineering Mindset Section */}
+      <section className="py-20 md:py-32 border-t border-border bg-card/30">
+        <div className="container max-w-7xl mx-auto px-4">
+          <h2 className="text-4xl md:text-5xl font-bold mb-12">Engineering Philosophy</h2>
+          
+          <div className="grid md:grid-cols-3 gap-8">
+            <div className="space-y-4">
+              <div className="w-12 h-12 bg-accent/20 rounded-lg flex items-center justify-center">
+                <Code2 className="w-6 h-6 text-accent" />
+              </div>
+              <h3 className="text-xl font-bold">Clean Architecture</h3>
+              <p className="text-foreground/70">
+                Building systems with clear separation of concerns, modular design, and maintainable code structures.
+              </p>
+            </div>
+            
+            <div className="space-y-4">
+              <div className="w-12 h-12 bg-accent/20 rounded-lg flex items-center justify-center">
+                <Zap className="w-6 h-6 text-accent" />
+              </div>
+              <h3 className="text-xl font-bold">Scalability First</h3>
+              <p className="text-foreground/70">
+                Designing systems that grow efficiently, with performance optimization and infrastructure considerations from the start.
+              </p>
+            </div>
+            
+            <div className="space-y-4">
+              <div className="w-12 h-12 bg-accent/20 rounded-lg flex items-center justify-center">
+                <Shield className="w-6 h-6 text-accent" />
+              </div>
+              <h3 className="text-xl font-bold">Security & Reliability</h3>
+              <p className="text-foreground/70">
+                Implementing robust authentication, authorization, and error handling to build trustworthy systems.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Contact Section */}
+      <section id="contact" className="py-20 md:py-32 border-t border-border">
+        <div className="container max-w-7xl mx-auto px-4 text-center">
+          <h2 className="text-4xl md:text-5xl font-bold mb-8">Let's Connect</h2>
+          <p className="text-xl text-foreground/70 mb-12 max-w-2xl mx-auto">
+            Interested in discussing backend architecture, system design, or potential opportunities? Feel free to reach out.
+          </p>
+          
+          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            <Button 
+              className="bg-accent text-accent-foreground hover:bg-accent/90 text-base px-8 py-6"
+              onClick={() => window.open("mailto:contact@example.com")}
+            >
+              <Mail className="w-5 h-5 mr-2" />
+              Email Me
+            </Button>
+            <Button 
+              variant="outline" 
+              className="border-accent text-accent hover:bg-accent/10 text-base px-8 py-6"
+              onClick={() => window.open("https://github.com", "_blank")}
+            >
+              <Github className="w-5 h-5 mr-2" />
+              GitHub Profile
+            </Button>
+          </div>
+        </div>
+      </section>
+
+      {/* Footer */}
+      <footer className="border-t border-border py-12 bg-card/50">
+        <div className="container max-w-7xl mx-auto px-4">
+          <div className="flex flex-col md:flex-row justify-between items-center gap-8">
+            <div>
+              <p className="text-foreground/60 text-sm">
+                © 2026 Saif Al-Din Kenani. All rights reserved.
+              </p>
+            </div>
+            <div className="flex gap-6">
+              <a href="https://github.com" target="_blank" rel="noopener noreferrer" className="text-foreground/60 hover:text-accent transition-colors">
+                <Github className="w-5 h-5" />
+              </a>
+              <a href="mailto:contact@example.com" className="text-foreground/60 hover:text-accent transition-colors">
+                <Mail className="w-5 h-5" />
+              </a>
+            </div>
+          </div>
+        </div>
+      </footer>
     </div>
   );
 }
