@@ -187,9 +187,9 @@ export default function Home() {
     <div className="min-h-screen bg-background text-foreground">
       {/* Navigation */}
       <nav className="fixed top-0 left-0 right-0 z-50 bg-background/80 backdrop-blur-md border-b border-border">
-        <div className="container max-w-7xl mx-auto px-4 py-4 flex items-center justify-between">
-          <div className="text-lg font-bold text-accent">SK</div>
-          <div className="flex gap-6 text-sm">
+        <div className="container max-w-7xl mx-auto px-4 py-3 sm:py-4 flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
+          <div className="text-base sm:text-lg font-bold text-accent">SK</div>
+          <div className="flex flex-wrap gap-3 sm:gap-6 text-xs sm:text-sm">
             <a href="#about" className="hover:text-accent transition-colors">About</a>
             <a href="#projects" className="hover:text-accent transition-colors">Projects</a>
             <a href="#tech" className="hover:text-accent transition-colors">Tech</a>
@@ -199,7 +199,7 @@ export default function Home() {
       </nav>
 
       {/* Hero Section */}
-      <section className="relative min-h-screen flex items-center pt-20 overflow-hidden">
+      <section className="relative min-h-screen flex items-center pt-24 sm:pt-20 overflow-hidden">
         {/* Background Image */}
         <div 
           className="absolute inset-0 z-0"
@@ -215,27 +215,27 @@ export default function Home() {
         <div className="container max-w-7xl mx-auto px-4 relative z-10">
           <div className="max-w-3xl">
             <div className="mb-6 inline-block">
-              <span className="text-accent text-sm font-mono tracking-wider">Backend Engineer</span>
+              <span className="text-accent text-xs sm:text-sm font-mono tracking-wider">Backend Engineer</span>
             </div>
             
-            <h1 className="text-6xl md:text-7xl font-bold mb-6 leading-tight">
+            <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold mb-4 sm:mb-6 leading-tight">
               Building Scalable Systems
             </h1>
             
-            <p className="text-xl md:text-2xl text-foreground/80 mb-8 leading-relaxed max-w-2xl">
+            <p className="text-base sm:text-lg md:text-xl text-foreground/80 mb-6 sm:mb-8 leading-relaxed max-w-2xl">
               Specialized in modular architectures, enterprise APIs, authentication systems, and infrastructure design. Focused on clean code and system scalability.
             </p>
             
             <div className="flex flex-col sm:flex-row gap-4">
               <Button 
-                className="bg-accent text-accent-foreground hover:bg-accent/90 text-base px-8 py-6"
+                className="bg-accent text-accent-foreground hover:bg-accent/90 text-sm sm:text-base px-6 sm:px-8 py-4 sm:py-6"
                 onClick={() => document.getElementById("projects")?.scrollIntoView({ behavior: "smooth" })}
               >
                 View Projects
               </Button>
               <Button 
                 variant="outline" 
-                className="border-accent text-accent hover:bg-accent/10 text-base px-8 py-6"
+                className="border-accent text-accent hover:bg-accent/10 text-sm sm:text-base px-6 sm:px-8 py-4 sm:py-6"
                 onClick={() => window.open("https://github.com", "_blank")}
               >
                 <Github className="w-5 h-5 mr-2" />
@@ -243,7 +243,7 @@ export default function Home() {
               </Button>
               <Button 
                 variant="outline" 
-                className="border-accent text-accent hover:bg-accent/10 text-base px-8 py-6"
+                className="border-accent text-accent hover:bg-accent/10 text-sm sm:text-base px-6 sm:px-8 py-4 sm:py-6"
                 onClick={() => window.open("mailto:contact@example.com")}
               >
                 <Mail className="w-5 h-5 mr-2" />
@@ -255,12 +255,12 @@ export default function Home() {
       </section>
 
       {/* About Section */}
-      <section id="about" className="py-20 md:py-32 border-t border-border">
+      <section id="about" className="py-16 sm:py-20 md:py-32 border-t border-border">
         <div className="container max-w-7xl mx-auto px-4">
           <div className="grid md:grid-cols-2 gap-12 items-center">
             <div>
-              <h2 className="text-4xl md:text-5xl font-bold mb-8">About Me</h2>
-              <div className="space-y-6 text-lg text-foreground/80">
+              <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-6 sm:mb-8">About Me</h2>
+              <div className="space-y-4 sm:space-y-6 text-base sm:text-lg text-foreground/80">
                 <p>
                   I'm a backend engineer from Syria, currently studying at Damascus University. My focus is on designing and building scalable systems that prioritize clean architecture and maintainability.
                 </p>
@@ -273,46 +273,46 @@ export default function Home() {
               </div>
             </div>
             
-            <div className="grid grid-cols-2 gap-6">
-              <div className="bg-card border border-border rounded-lg p-6">
-                <Code2 className="w-8 h-8 text-accent mb-4" />
-                <h3 className="font-bold mb-2">Backend Architecture</h3>
-                <p className="text-sm text-foreground/60">Modular design, clean code, scalable systems</p>
-              </div>
-              <div className="bg-card border border-border rounded-lg p-6">
-                <Shield className="w-8 h-8 text-accent mb-4" />
-                <h3 className="font-bold mb-2">Authentication</h3>
-                <p className="text-sm text-foreground/60">RBAC, permissions, secure systems</p>
-              </div>
-              <div className="bg-card border border-border rounded-lg p-6">
-                <Database className="w-8 h-8 text-accent mb-4" />
-                <h3 className="font-bold mb-2">Data Management</h3>
-                <p className="text-sm text-foreground/60">ORM, caching, query optimization</p>
-              </div>
-              <div className="bg-card border border-border rounded-lg p-6">
-                <Zap className="w-8 h-8 text-accent mb-4" />
-                <h3 className="font-bold mb-2">Performance</h3>
-                <p className="text-sm text-foreground/60">Optimization, scalability, efficiency</p>
+              <div className="grid grid-cols-2 gap-6">
+                <div className="bg-card border border-border rounded-lg p-6">
+                  <Code2 className="w-8 h-8 text-accent mb-4" />
+                  <h3 className="text-base sm:text-lg font-bold mb-2">Backend Architecture</h3>
+                  <p className="text-sm text-foreground/60">Modular design, clean code, scalable systems</p>
+                </div>
+                <div className="bg-card border border-border rounded-lg p-6">
+                  <Shield className="w-8 h-8 text-accent mb-4" />
+                  <h3 className="text-base sm:text-lg font-bold mb-2">Authentication</h3>
+                  <p className="text-sm text-foreground/60">RBAC, permissions, secure systems</p>
+                </div>
+                <div className="bg-card border border-border rounded-lg p-6">
+                  <Database className="w-8 h-8 text-accent mb-4" />
+                  <h3 className="text-base sm:text-lg font-bold mb-2">Data Management</h3>
+                  <p className="text-sm text-foreground/60">ORM, caching, query optimization</p>
+                </div>
+                <div className="bg-card border border-border rounded-lg p-6">
+                  <Zap className="w-8 h-8 text-accent mb-4" />
+                  <h3 className="text-base sm:text-lg font-bold mb-2">Performance</h3>
+                  <p className="text-sm text-foreground/60">Optimization, scalability, efficiency</p>
+                </div>
               </div>
             </div>
-          </div>
         </div>
       </section>
 
       {/* Tech Stack Section */}
-      <section id="tech" className="py-20 md:py-32 border-t border-border bg-card/30">
+      <section id="tech" className="py-16 sm:py-20 md:py-32 border-t border-border bg-card/30">
         <div className="container max-w-7xl mx-auto px-4">
-          <h2 className="text-4xl md:text-5xl font-bold mb-16">Technology Stack</h2>
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-10 sm:mb-16">Technology Stack</h2>
           
           <div className="grid md:grid-cols-3 gap-12">
             {Object.entries(techStack).map(([category, techs]) => (
               <div key={category}>
-                <h3 className="text-xl font-bold text-accent mb-6">{category}</h3>
-                <div className="space-y-3">
+                <h3 className="text-lg sm:text-xl font-bold text-accent mb-4 sm:mb-6">{category}</h3>
+                <div className="space-y-2 sm:space-y-3">
                   {techs.map((tech) => (
                     <div key={tech} className="flex items-center gap-3">
                       <div className="w-2 h-2 bg-accent rounded-full" />
-                      <span className="text-foreground/80">{tech}</span>
+                      <span className="text-sm sm:text-base text-foreground/80">{tech}</span>
                     </div>
                   ))}
                 </div>
@@ -323,20 +323,20 @@ export default function Home() {
       </section>
 
       {/* Projects Section */}
-      <section id="projects" className="py-20 md:py-32 border-t border-border">
+      <section id="projects" className="py-16 sm:py-20 md:py-32 border-t border-border">
         <div className="container max-w-7xl mx-auto px-4">
-          <h2 className="text-4xl md:text-5xl font-bold mb-16">Featured Projects</h2>
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-10 sm:mb-16">Featured Projects</h2>
           
           {/* Recall Project - Featured */}
           <div 
             id="recall"
             data-project
-            className={`mb-20 transition-all duration-700 ${
+            className={`mb-16 sm:mb-20 transition-all duration-700 ${
               visibleProjects.includes("recall") ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
             }`}
           >
             <div className="grid md:grid-cols-2 gap-8 items-center bg-card border border-border rounded-lg overflow-hidden">
-              <div className="h-80 md:h-full bg-gradient-to-br from-accent/20 to-transparent relative overflow-hidden">
+              <div className="h-56 sm:h-64 md:h-full bg-gradient-to-br from-accent/20 to-transparent relative overflow-hidden">
                 <img 
                   src="https://d2xsxph8kpxj0f.cloudfront.net/310519663252151284/YRMVdaCd3WRBALBDiSkFtd/project-recall-showcase-Vz6Xtg8oGKcLJubMWYhF33.webp"
                   alt="Recall Architecture"
@@ -345,23 +345,23 @@ export default function Home() {
                 <div className="absolute inset-0 bg-gradient-to-r from-background/80 to-transparent" />
               </div>
               
-              <div className="p-8 md:p-12">
+              <div className="p-6 sm:p-8 md:p-12">
                 <div className="inline-block mb-4 px-3 py-1 bg-accent/20 text-accent text-xs font-mono rounded">
                   FEATURED PROJECT
                 </div>
                 
-                <h3 className="text-3xl md:text-4xl font-bold mb-3">Recall</h3>
-                <p className="text-accent text-sm font-mono mb-6">Enterprise Administrative Platform</p>
+                <h3 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-3">Recall</h3>
+                <p className="text-accent text-xs sm:text-sm font-mono mb-6">Enterprise Administrative Platform</p>
                 
-                <p className="text-foreground/80 mb-8 leading-relaxed">
+                <p className="text-sm sm:text-base text-foreground/80 mb-6 sm:mb-8 leading-relaxed">
                   Large-scale modular backend platform built with NestJS and TypeScript, focused on authentication, permissions, records management, committee workflows, and organizational hierarchy management.
                 </p>
                 
                 <div className="mb-8">
-                  <h4 className="font-bold text-sm text-accent mb-4">ARCHITECTURE HIGHLIGHTS</h4>
+                  <h4 className="font-bold text-xs sm:text-sm text-accent mb-3 sm:mb-4">ARCHITECTURE HIGHLIGHTS</h4>
                   <ul className="space-y-2">
                     {projects[0].highlights.map((highlight) => (
-                      <li key={highlight} className="text-sm text-foreground/70 flex items-start gap-3">
+                      <li key={highlight} className="text-xs sm:text-sm text-foreground/70 flex items-start gap-3">
                         <span className="text-accent mt-1">→</span>
                         <span>{highlight}</span>
                       </li>
@@ -370,10 +370,10 @@ export default function Home() {
                 </div>
                 
                 <div className="mb-8">
-                  <h4 className="font-bold text-sm text-accent mb-4">TECH STACK</h4>
+                  <h4 className="font-bold text-xs sm:text-sm text-accent mb-3 sm:mb-4">TECH STACK</h4>
                   <div className="flex flex-wrap gap-2">
                     {projects[0].tech.map((tech) => (
-                      <span key={tech} className="px-3 py-1 bg-card border border-border text-sm rounded text-foreground/80">
+                      <span key={tech} className="px-3 py-1 bg-card border border-border text-xs sm:text-sm rounded text-foreground/80">
                         {tech}
                       </span>
                     ))}
@@ -398,22 +398,22 @@ export default function Home() {
                 key={project.id}
                 id={project.id}
                 data-project
-                className={`bg-card border border-border rounded-lg p-8 hover:border-accent/50 transition-all duration-700 ${
+                className={`bg-card border border-border rounded-lg p-6 sm:p-8 hover:border-accent/50 transition-all duration-700 ${
                   visibleProjects.includes(project.id) ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
                 }`}
               >
-                <h3 className="text-2xl font-bold mb-2">{project.title}</h3>
+                <h3 className="text-xl sm:text-2xl font-bold mb-2">{project.title}</h3>
                 <p className="text-accent text-xs font-mono mb-4">{project.type}</p>
                 
-                <p className="text-foreground/70 mb-6 leading-relaxed">
+                <p className="text-sm sm:text-base text-foreground/70 mb-6 leading-relaxed">
                   {project.description}
                 </p>
                 
                 <div className="mb-6">
-                  <h4 className="font-bold text-xs text-accent mb-3 tracking-wider">KEY FEATURES</h4>
+                  <h4 className="font-bold text-[11px] sm:text-xs text-accent mb-2 sm:mb-3 tracking-wider">KEY FEATURES</h4>
                   <ul className="space-y-2">
                     {project.highlights.slice(0, 3).map((highlight) => (
-                      <li key={highlight} className="text-xs text-foreground/60 flex items-start gap-2">
+                      <li key={highlight} className="text-[11px] sm:text-xs text-foreground/60 flex items-start gap-2">
                         <span className="text-accent">•</span>
                         <span>{highlight}</span>
                       </li>
@@ -424,7 +424,7 @@ export default function Home() {
                 <div className="mb-6">
                   <div className="flex flex-wrap gap-2">
                     {project.tech.map((tech) => (
-                      <span key={tech} className="px-2 py-1 bg-background border border-border text-xs rounded text-foreground/70">
+                      <span key={tech} className="px-2 py-1 bg-background border border-border text-[11px] sm:text-xs rounded text-foreground/70">
                         {tech}
                       </span>
                     ))}
@@ -447,37 +447,37 @@ export default function Home() {
       </section>
 
       {/* Engineering Mindset Section */}
-      <section className="py-20 md:py-32 border-t border-border bg-card/30">
+      <section className="py-16 sm:py-20 md:py-32 border-t border-border bg-card/30">
         <div className="container max-w-7xl mx-auto px-4">
-          <h2 className="text-4xl md:text-5xl font-bold mb-12">Engineering Philosophy</h2>
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-8 sm:mb-12">Engineering Philosophy</h2>
           
           <div className="grid md:grid-cols-3 gap-8">
             <div className="space-y-4">
-              <div className="w-12 h-12 bg-accent/20 rounded-lg flex items-center justify-center">
-                <Code2 className="w-6 h-6 text-accent" />
+              <div className="w-10 h-10 sm:w-12 sm:h-12 bg-accent/20 rounded-lg flex items-center justify-center">
+                <Code2 className="w-5 h-5 sm:w-6 sm:h-6 text-accent" />
               </div>
-              <h3 className="text-xl font-bold">Clean Architecture</h3>
-              <p className="text-foreground/70">
+              <h3 className="text-lg sm:text-xl font-bold">Clean Architecture</h3>
+              <p className="text-sm sm:text-base text-foreground/70">
                 Building systems with clear separation of concerns, modular design, and maintainable code structures.
               </p>
             </div>
             
             <div className="space-y-4">
-              <div className="w-12 h-12 bg-accent/20 rounded-lg flex items-center justify-center">
-                <Zap className="w-6 h-6 text-accent" />
+              <div className="w-10 h-10 sm:w-12 sm:h-12 bg-accent/20 rounded-lg flex items-center justify-center">
+                <Zap className="w-5 h-5 sm:w-6 sm:h-6 text-accent" />
               </div>
-              <h3 className="text-xl font-bold">Scalability First</h3>
-              <p className="text-foreground/70">
+              <h3 className="text-lg sm:text-xl font-bold">Scalability First</h3>
+              <p className="text-sm sm:text-base text-foreground/70">
                 Designing systems that grow efficiently, with performance optimization and infrastructure considerations from the start.
               </p>
             </div>
             
             <div className="space-y-4">
-              <div className="w-12 h-12 bg-accent/20 rounded-lg flex items-center justify-center">
-                <Shield className="w-6 h-6 text-accent" />
+              <div className="w-10 h-10 sm:w-12 sm:h-12 bg-accent/20 rounded-lg flex items-center justify-center">
+                <Shield className="w-5 h-5 sm:w-6 sm:h-6 text-accent" />
               </div>
-              <h3 className="text-xl font-bold">Security & Reliability</h3>
-              <p className="text-foreground/70">
+              <h3 className="text-lg sm:text-xl font-bold">Security & Reliability</h3>
+              <p className="text-sm sm:text-base text-foreground/70">
                 Implementing robust authentication, authorization, and error handling to build trustworthy systems.
               </p>
             </div>
@@ -486,16 +486,16 @@ export default function Home() {
       </section>
 
       {/* Contact Section */}
-      <section id="contact" className="py-20 md:py-32 border-t border-border">
+      <section id="contact" className="py-16 sm:py-20 md:py-32 border-t border-border">
         <div className="container max-w-7xl mx-auto px-4 text-center">
-          <h2 className="text-4xl md:text-5xl font-bold mb-8">Let's Connect</h2>
-          <p className="text-xl text-foreground/70 mb-12 max-w-2xl mx-auto">
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-6 sm:mb-8">Let's Connect</h2>
+          <p className="text-base sm:text-lg text-foreground/70 mb-8 sm:mb-12 max-w-2xl mx-auto">
             Interested in discussing backend architecture, system design, or potential opportunities? Feel free to reach out.
           </p>
           
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Button 
-              className="bg-accent text-accent-foreground hover:bg-accent/90 text-base px-8 py-6"
+              className="bg-accent text-accent-foreground hover:bg-accent/90 text-sm sm:text-base px-6 sm:px-8 py-4 sm:py-6"
               onClick={() => window.open("mailto:contact@example.com")}
             >
               <Mail className="w-5 h-5 mr-2" />
@@ -503,7 +503,7 @@ export default function Home() {
             </Button>
             <Button 
               variant="outline" 
-              className="border-accent text-accent hover:bg-accent/10 text-base px-8 py-6"
+              className="border-accent text-accent hover:bg-accent/10 text-sm sm:text-base px-6 sm:px-8 py-4 sm:py-6"
               onClick={() => window.open("https://github.com", "_blank")}
             >
               <Github className="w-5 h-5 mr-2" />
