@@ -1,5 +1,14 @@
 import { Button } from "@/components/ui/button";
-import { Github, Mail, ExternalLink, Code2, Database, Zap, Shield } from "lucide-react";
+import {
+  Github,
+  Mail,
+  ExternalLink,
+  Code2,
+  Database,
+  Zap,
+  Shield,
+  Linkedin,
+} from "lucide-react";
 import { useEffect, useState } from "react";
 
 /**
@@ -29,117 +38,121 @@ const projects: Project[] = [
   {
     id: "recall",
     title: "Recall",
-    type: "Enterprise Administrative Platform",
-    description: "Large-scale modular backend platform built with NestJS and TypeScript, focused on authentication, permissions, records management, committee workflows, and organizational hierarchy management.",
+    type: "منصة مؤسسية متكاملة",
+    description:
+      "نظام مؤسسي متكامل تم تطويره ببنية حديثة. تم مؤخرًا إعادة هيكلته باعتماد Layered Architecture مع تطبيق SOLID وDDD لتعزيز القابلية للتوسع وسهولة الصيانة وفصل الاهتمامات.",
     highlights: [
-      "RBAC/permissions architecture",
-      "Modular monolith structure",
-      "Redis caching",
-      "Prisma ORM",
-      "Sessions management",
-      "Committee workflow logic",
-      "Layered backend architecture",
-      "Scalable module organization"
+      "فصل الأعمال في طبقات: Domain, Application, Infrastructure, Presentation",
+      "اعتماد SOLID بشكل عملي في جميع جوانب التوسع",
+      "تنظيم Business Logic بدوال وخدمات واضحة لكل مجال",
+      "نظام صلاحيات دقيق وموسع لإدارة الوصول",
+      "سهولة إضافة وحدات وكيانات جديدة بسرعة"
     ],
     tech: ["NestJS", "TypeScript", "Prisma", "Redis"],
-    github: "https://github.com",
+    github: "https://github.com/IMDNOS/recall",
     featured: true
   },
   {
     id: "cabsula",
     title: "Cabsula",
-    type: "Pharmacy Management System",
-    description: "Enterprise pharmacy management backend focused on inventory consistency, supplier workflows, batch tracking, financial operations, and role-based administration.",
+    type: "نظام إدارة صيدليات",
+    description:
+      "نظام Backend لإدارة الصيدليات يركز على المخزون والموردين والفواتير والمدفوعات بدقة تشغيلية وصلاحيات إدارية قوية.",
     highlights: [
-      "Authentication system",
-      "Inventory lifecycle handling",
-      "Supplier and invoice management",
-      "Stock returns and destruction workflows",
-      "Admin authorization architecture",
-      "REST APIs",
-      "Sanctum security"
+      "مصادقة وتفويض باستخدام Sanctum",
+      "إدارة دورة حياة المخزون والدفعات",
+      "إدارة الموردين والفواتير والمرتجعات",
+      "عمليات إتلاف وإرجاع منظمة",
+      "نظام صلاحيات إداري واضح",
+      "REST APIs قابلة للتكامل",
+      "تقليل الأخطاء التشغيلية في الإدارة اليومية"
     ],
     tech: ["Laravel", "Sanctum", "MySQL", "Blade", "REST API"],
-    github: "https://github.com"
+    github: "https://github.com/saifkenani-SW/Cabsula"
   },
   {
     id: "goswift",
     title: "GoSwift Backend",
-    type: "E-Commerce / Orders Backend",
-    description: "Scalable backend architecture for stores, products, carts, orders, and notifications with modular API organization and admin management capabilities.",
+    type: "Backend للتجارة الإلكترونية والطلبات",
+    description:
+      "خلفية مرنة لإدارة المتاجر والمنتجات والسلة والطلبات والإشعارات مع تنظيم API قابل للتوسع وإدارة فعالة للمشرفين.",
     highlights: [
-      "Cart system",
-      "Order lifecycle",
-      "Filtering/search",
-      "Notifications",
-      "Admin dashboard backend",
-      "Modular APIs"
+      "نظام سلة متكامل",
+      "إدارة دورة حياة الطلبات",
+      "بحث وتصفية متقدمة",
+      "إشعارات للمستخدمين",
+      "دعم واجهات إدارة المشرف",
+      "تصميم API معياري"
     ],
     tech: ["Laravel", "MySQL", "REST API"],
-    github: "https://github.com"
+    github: "https://github.com/saifkenani-SW/GoSwift-BackEnd"
   },
   {
     id: "senet",
     title: "Senet Game",
-    type: "AI Strategy Board Game",
-    description: "Board game implementation focused on game-state modeling, AI decision systems, probability evaluation, and search-based gameplay logic.",
+    type: "لعبة استراتيجية مدعومة بخوارزميات ذكاء",
+    description:
+      "تنفيذ لعبة لوحية مع نمذجة دقيقة لحالة اللعبة وخوارزميات قرار ذكية وتقييم احتمالات الحركة لتحقيق تجربة لعب تحليلية.",
     highlights: [
-      "ExpectMiniMax algorithm",
-      "Game state evaluation",
-      "AI move calculation",
-      "Probability modeling",
-      "Object-oriented architecture"
+      "خوارزمية ExpectMiniMax",
+      "تقييم حالات اللعب",
+      "حساب الحركات بالذكاء الاصطناعي",
+      "نمذجة احتمالات النتائج",
+      "تصميم كائني واضح"
     ],
     tech: ["Java", "OOP", "AI Search Algorithms"],
-    github: "https://github.com"
+    github: "https://github.com/saifkenani-SW/Senet-Game"
   },
   {
     id: "maze",
     title: "Maze Collapse Game",
-    type: "Search Algorithm Puzzle Game",
-    description: "Maze-based puzzle game implementing classical search algorithms with dynamic map behavior and multiple visualization modes.",
+    type: "لعبة ألغاز بخوارزميات بحث",
+    description:
+      "لعبة متاهة ديناميكية تُطبّق خوارزميات البحث الكلاسيكية مع أنماط عرض متعددة ومحاكاة للمستويات.",
     highlights: [
-      "BFS algorithm",
-      "DFS algorithm",
-      "UCS algorithm",
-      "2D/3D rendering",
-      "Level simulation",
-      "File-based maps"
+      "BFS و DFS و UCS",
+      "عرض 2D/3D",
+      "محاكاة مستويات",
+      "خرائط من ملفات",
+      "منطق لعب ديناميكي",
+      "تطبيق عملي لمبادئ البحث"
     ],
     tech: ["Java", "Swing", "Search Algorithms"],
-    github: "https://github.com"
+    github: "https://github.com/saifkenani-SW/Maze-Collapse-Game"
   },
   {
     id: "compiler",
     title: "Flask Compiler",
     type: "Compiler + Web Application",
-    description: "Hybrid project combining compiler construction concepts with a Flask-powered product management web application.",
+    description:
+      "مشروع يجمع بين مفاهيم بناء المترجمات وتطبيق ويب لإدارة المنتجات باستخدام Flask مع بنية تعليمية عملية متكاملة.",
     highlights: [
-      "Lexer implementation",
-      "Parser construction",
-      "AST generation",
-      "Symbol table management",
-      "Compiler testing",
-      "Flask backend",
-      "Image upload system"
+      "تنفيذ Lexer وParser",
+      "توليد AST",
+      "إدارة Symbol Table",
+      "اختبارات لمكونات المترجم",
+      "Backend باستخدام Flask",
+      "رفع صور للمنتجات",
+      "ربط مفاهيم أكاديمية بتطبيق عملي"
     ],
     tech: ["Python", "Flask", "Compiler Design"],
-    github: "https://github.com"
+    github: "https://github.com/saifkenani-SW/flask-compiler-python"
   },
   {
     id: "parallel",
     title: "Parallel Programming App",
-    type: "Modular Backend Application",
-    description: "Structured NestJS backend application demonstrating scalable modular architecture and separated business domains.",
+    type: "تطبيق Backend معياري",
+    description:
+      "تطبيق مبني على NestJS يعكس تنظيمًا واضحًا للنطاقات التجارية وتوزيعًا عمليًا للخدمات ضمن بنية قابلة للتوسع.",
     highlights: [
-      "Domain modules",
-      "Orders/payments/inventory separation",
-      "Docker setup",
-      "Email module",
-      "Scalable structure"
+      "تقسيم النظام إلى Domain Modules",
+      "فصل الطلبات والمدفوعات والمخزون",
+      "تهيئة تشغيل عبر Docker",
+      "وحدة بريد إلكتروني مستقلة",
+      "هيكلة مناسبة للتوسع المؤسسي"
     ],
     tech: ["NestJS", "TypeScript", "Docker"],
-    github: "https://github.com"
+    github: "https://github.com/Abdalrhmman-Alsyed/parallent_programming_app"
   }
 ];
 
@@ -219,11 +232,11 @@ export default function Home() {
             </div>
             
             <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold mb-4 sm:mb-6 leading-tight">
-              Building Scalable Systems
+              Saif Al-Din Kenani
             </h1>
             
             <p className="text-base sm:text-lg md:text-xl text-foreground/80 mb-6 sm:mb-8 leading-relaxed max-w-2xl">
-              Specialized in modular architectures, enterprise APIs, authentication systems, and infrastructure design. Focused on clean code and system scalability.
+              مهندس Backend متخصص في بناء الأنظمة القابلة للتوسع عبر هندسة معيارية حديثة، مع تركيز قوي على SOLID وDDD وLayered Architecture في التطبيقات المؤسسية.
             </p>
             
             <div className="flex flex-col sm:flex-row gap-4">
@@ -236,7 +249,7 @@ export default function Home() {
               <Button 
                 variant="outline" 
                 className="border-accent text-accent hover:bg-accent/10 text-sm sm:text-base px-6 sm:px-8 py-4 sm:py-6"
-                onClick={() => window.open("https://github.com", "_blank")}
+                onClick={() => window.open("https://github.com/saifkenani-SW", "_blank")}
               >
                 <Github className="w-5 h-5 mr-2" />
                 GitHub
@@ -244,11 +257,17 @@ export default function Home() {
               <Button 
                 variant="outline" 
                 className="border-accent text-accent hover:bg-accent/10 text-sm sm:text-base px-6 sm:px-8 py-4 sm:py-6"
-                onClick={() => window.open("mailto:contact@example.com")}
+                onClick={() => window.open("mailto:saif.khaled.kenani@gmail.com")}
               >
                 <Mail className="w-5 h-5 mr-2" />
                 Contact
               </Button>
+            </div>
+            <div className="mt-6 space-y-2 text-sm sm:text-base text-foreground/80">
+              <p>الاسم: Saif Al-Din Kenani</p>
+              <p>البريد الإلكتروني: saif.khaled.kenani@gmail.com</p>
+              <p>GitHub: https://github.com/saifkenani-SW</p>
+              <p>LinkedIn: https://www.linkedin.com/in/saif-kenani-180a6a381/</p>
             </div>
           </div>
         </div>
@@ -262,13 +281,13 @@ export default function Home() {
               <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-6 sm:mb-8">About Me</h2>
               <div className="space-y-4 sm:space-y-6 text-base sm:text-lg text-foreground/80">
                 <p>
-                  I'm a backend engineer from Syria, currently studying at Damascus University. My focus is on designing and building scalable systems that prioritize clean architecture and maintainability.
+                  أنا مهندس Backend من سوريا، أعمل على تصميم وبناء أنظمة مؤسسية قابلة للتوسع مع اهتمام عالٍ بجودة البنية وسهولة الصيانة طويلة المدى.
                 </p>
                 <p>
-                  I specialize in modular backend architectures, REST API design, authentication and authorization systems, and enterprise-grade infrastructure. My engineering mindset centers on system organization, scalability, and the principles that make code maintainable at scale.
+                  أركز على تصميم REST APIs، أنظمة المصادقة والتفويض، والبنية التحتية للتطبيقات الكبيرة مع فصل واضح للمسؤوليات لتحقيق مرونة التطوير.
                 </p>
                 <p>
-                  Beyond backend systems, I'm interested in algorithms, AI game logic, compiler design, and software architecture patterns. I approach each project with a focus on technical excellence and engineering rigor.
+                  أهتم أيضًا بالخوارزميات وتصميم المترجمات وأنماط هندسة البرمجيات، وأطبّق ذلك عمليًا في المشاريع لإنتاج حلول احترافية موثوقة للشركات.
                 </p>
               </div>
             </div>
@@ -354,11 +373,11 @@ export default function Home() {
                 <p className="text-accent text-xs sm:text-sm font-mono mb-6">Enterprise Administrative Platform</p>
                 
                 <p className="text-sm sm:text-base text-foreground/80 mb-6 sm:mb-8 leading-relaxed">
-                  Large-scale modular backend platform built with NestJS and TypeScript, focused on authentication, permissions, records management, committee workflows, and organizational hierarchy management.
+                  منصة Recall هي نظام مؤسسي متكامل من تطويري، تمت إعادة هيكلته مؤخرًا عبر Layered Architecture وتطبيق SOLID وDDD، ما رفع جودة الاعتمادية وفصل الاهتمامات وسهّل التوسع والصيانة.
                 </p>
                 
                 <div className="mb-8">
-                  <h4 className="font-bold text-xs sm:text-sm text-accent mb-3 sm:mb-4">ARCHITECTURE HIGHLIGHTS</h4>
+                  <h4 className="font-bold text-xs sm:text-sm text-accent mb-3 sm:mb-4">FEATURES / UPDATES</h4>
                   <ul className="space-y-2">
                     {projects[0].highlights.map((highlight) => (
                       <li key={highlight} className="text-xs sm:text-sm text-foreground/70 flex items-start gap-3">
@@ -496,7 +515,7 @@ export default function Home() {
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Button 
               className="bg-accent text-accent-foreground hover:bg-accent/90 text-sm sm:text-base px-6 sm:px-8 py-4 sm:py-6"
-              onClick={() => window.open("mailto:contact@example.com")}
+              onClick={() => window.open("mailto:saif.khaled.kenani@gmail.com")}
             >
               <Mail className="w-5 h-5 mr-2" />
               Email Me
@@ -504,10 +523,18 @@ export default function Home() {
             <Button 
               variant="outline" 
               className="border-accent text-accent hover:bg-accent/10 text-sm sm:text-base px-6 sm:px-8 py-4 sm:py-6"
-              onClick={() => window.open("https://github.com", "_blank")}
+              onClick={() => window.open("https://github.com/saifkenani-SW", "_blank")}
             >
               <Github className="w-5 h-5 mr-2" />
               GitHub Profile
+            </Button>
+            <Button 
+              variant="outline" 
+              className="border-accent text-accent hover:bg-accent/10 text-sm sm:text-base px-6 sm:px-8 py-4 sm:py-6"
+              onClick={() => window.open("https://www.linkedin.com/in/saif-kenani-180a6a381/", "_blank")}
+            >
+              <Linkedin className="w-5 h-5 mr-2" />
+              LinkedIn
             </Button>
           </div>
         </div>
@@ -523,11 +550,14 @@ export default function Home() {
               </p>
             </div>
             <div className="flex gap-6">
-              <a href="https://github.com" target="_blank" rel="noopener noreferrer" className="text-foreground/60 hover:text-accent transition-colors">
+              <a href="https://github.com/saifkenani-SW" target="_blank" rel="noopener noreferrer" className="text-foreground/60 hover:text-accent transition-colors">
                 <Github className="w-5 h-5" />
               </a>
-              <a href="mailto:contact@example.com" className="text-foreground/60 hover:text-accent transition-colors">
+              <a href="mailto:saif.khaled.kenani@gmail.com" className="text-foreground/60 hover:text-accent transition-colors">
                 <Mail className="w-5 h-5" />
+              </a>
+              <a href="https://www.linkedin.com/in/saif-kenani-180a6a381/" target="_blank" rel="noopener noreferrer" className="text-foreground/60 hover:text-accent transition-colors">
+                <Linkedin className="w-5 h-5" />
               </a>
             </div>
           </div>
